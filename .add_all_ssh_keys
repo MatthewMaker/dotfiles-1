@@ -1,0 +1,2 @@
+for element in ~/.ssh/*; do       grep --silent "private key" <(file --brief --preserve-date $element) && ssh-add -K $element;     done
+
