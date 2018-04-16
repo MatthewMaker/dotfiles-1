@@ -27,6 +27,11 @@ then
   source ~/.bashrc
 fi
 
+# activate all the ssh keys we can find.
+for element in ~/.ssh/*; do
+  grep --silent "private key" <(file --brief --preserve-date $element) && ssh-add -K $element;
+done
+
 # Syntax-highlight code for copying and pasting.
 # Requires highlight (`brew install highlight`).
 function pretty() {
